@@ -1,54 +1,9 @@
-# BlueSpice "Search" service
+<img alt="BlueSpice Logo" align="right" src="https://bluespice.com/wp-content/uploads/2022/09/bluespice_logo.png" />
 
-This is a service that provides the search backend for Extension:BlueSpiceExtendedSearch. It is currently based on OpenSearch.
+# `bluespice/search` service for BlueSpice
 
-## Using it within BlueSpice or MediaWiki
+This service is the search component. It provides a search functionality for BlueSpice.
 
-Given you have this service running at `http://localhost:9200`, you can configure the BlueSpice search like this:
+It is part of the [BlueSpice MediaWiki deployment stack](https://github.com/hallowelt/bluespice-deploy). Instructions on how to use it can be found on the [official helpdesk 📚](https://en.wiki.bluespice.com/wiki/Setup:Installation_Guide/Docker). For questions and support, please use the [contact form 🌐](https://bluespice.com/contact/) or visit the [community forums 💡](https://community.bluespice.com/).
 
-```php
-$GLOBALS['bsgESBackendTransport'] = 'http';
-```
-
-## Additional Scripts
-Search stops writing in indices, if diskspace usage increases over 90%.
-In Order to remove the Lock decrease diskspace usage under 90% and run:
-```sh
-removeROtag
-```
-in Container
-or 
-```sh
-./bluespice-deploy exec search removeROtag
-```
-from compose-directory
-
-
-## How to release a new version
-
-### Build a new version of the image
-```sh
-docker build -t bluespice/search:latest .
-```
-
-### Apply proper tags
-HINT: We align the image tags with the version of BlueSpice that it is compatible with.
-
-Example:
-```sh
-docker tag bluespice/search:latest bluespice/search:4
-docker tag bluespice/search:latest bluespice/search:4.4
-docker tag bluespice/search:latest bluespice/search:4.4.1
-```
-
-### Push the image to the registry
-Example:
-```sh
-docker push bluespice/search:latest
-docker push bluespice/search:4
-docker push bluespice/search:4.4
-docker push bluespice/search:4.4.1
-```
-
-## Testing
-Install `trivy` and run `trivy image bluespice/search` to check for vulnerabilities.
+The `main` branch of this repository is intentionally kept empty. Please refer to the specific version branches (e.g., `5.1.x`, `5.2.x`, etc.) for the relevant Dockerfiles and configurations corresponding to each BlueSpice version.
