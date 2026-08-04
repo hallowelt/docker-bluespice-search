@@ -13,3 +13,4 @@ RUN chown -R 1000:0 /usr/share/opensearch /app/bin
 RUN chmod -R g=u /usr/share/opensearch /app/bin
 RUN chmod g+s /usr/share/opensearch
 USER 1000
+
