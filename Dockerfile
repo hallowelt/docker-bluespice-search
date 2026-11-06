@@ -23,5 +23,9 @@ RUN ln -sf /app/bin/removeROtag /usr/local/bin \
       /usr/share/opensearch/logs \
       /usr/share/opensearch/tmp
 
+# Build info: value of build arg BUILDINFO, `-` if not set
+ARG BUILDINFO
+RUN mkdir -p /image && echo "${BUILDINFO:--}" > /image/BUILDINFO
+
 USER 1000
 
