@@ -23,6 +23,9 @@ RUN ln -sf /app/bin/removeROtag /usr/local/bin \
       /usr/share/opensearch/logs \
       /usr/share/opensearch/tmp
 
+# Build timestamp (UTC, YmdHis)
+RUN mkdir -p /image && date -u +%Y%m%d%H%M%S > /image/BUILDINFO
+
 USER 1000
 
 
